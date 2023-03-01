@@ -81,5 +81,6 @@ filename = 'data.txt'
 info_classes, rooms = input(filename)
 solution = greedy(filename)
 print_timetable(solution)
+
   
   
