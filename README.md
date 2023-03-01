@@ -28,12 +28,11 @@ b.The number of each class has to be smaller than the capacity of the room.
 
 - The next N line, each line writes: t[i], g[i] and s[i]
 
-- The next line:c(1),c(2),....,c(M)
+- N+2 line: c(1),c(2),...., c(M)
 
 *Output:
 
-- Timetable
-
-- Maximize the number of classes that can be scheduled in the timetable.
+- Line 1: contains a positive integer Q
+- Line q + 1 (q = 1, 2, . . ., Q): contains 3 positive integers i, u, and v in which class i is assigned to slot u and room u
 
 I am responsible for the Greedy algorithm and Constraint Progamming using or-tools. Other algorithms that we used are Mixed Integer Programming, Local Search and Genetic algorithm.
