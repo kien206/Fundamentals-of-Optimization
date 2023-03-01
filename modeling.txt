@@ -1,0 +1,29 @@
+1. Variables
+x[i,d,s,r] = 1 when in day d, shift s, the class i is scheduled in room r. 0 otherwise.
+i in [1,N] , d in [1,5], s in [1,12], r in [1,M]
+y[i] = 1 if  ∑d ∑s ∑r x[i,d,s,r] = t[i] otherwise 0 for all i in [1,N]
+G[j]: Set of classes taught by teacher j
+
+We haven’t figured out a way to schedule a class in constructive periods. However in order to maximize the number of shifts scheduled for each class in a day, we create the two variables:
+Most_Shifts_Day[i]: Represent the maximum number of shifts scheduled for class i - of a day in a week
+Least_Shifts_Day[i]: Represent the minimum number of shifts scheduled for class i - of a day in a week
+
+2. Constraints
+- Two classes having the same teacher need to be scheduled separately:
+∑(𝑖 ∈𝐺[𝑝])∑𝑟 x[𝑖, 𝑑, 𝑘, 𝑟] = 1 if teacher p has class in day d, shift k, otherwise 0
+
+- If a class studies in 1 room, number of students less or equal to the  room capacity
+s[i] * x[i,d,s,r] <= c[r] for all i in [1,N], d in [1,5], s in [1,12], r in [1,M]
+
+- There can be only be one class at one room in a moment
+∑i x[i,d,s,r] <= 1 for all d in [1,5] ,s in [1,12] ,r in [1,M]
+ 
+Objective function
+
+We create a function that calculates the difference between the day that most shifts scheduled for class i (Most_Shifts_Day[i]) and the day that least shifts scheduled for class i (Least_Shifts_Day[i]). 
+So in the expected scenario, when class i is scheduled in just a day, the value of the function equals to 0 (Most_Shifts_Day[i]==Least_Shifts_Day[i])
+Along with the goal to maximize the number of classes that can be scheduled, we want to minimize the difference between Most_Shifts_Day[i] and Least_Shifts_Day[i].
+
+Therefore our objective function is:
+
+∑i y[i] -  (Most_Shifts_Day[i] - Least_Shifts_Day[i]) 
